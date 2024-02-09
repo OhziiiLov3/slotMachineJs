@@ -39,13 +39,23 @@ const column1 = document.getElementById('col-1');
 const column2 = document.getElementById('col-2');
 const column3 = document.getElementById('col-3');
 
+// defautl images 
+const addDefaultSymbols = () =>{
+    spinReel(column1, ['html','javascript','npm']);
+    spinReel(column2, ['npm','typescript','react']);
+    spinReel(column3, ['javascript','nestjs','typescript']) ;
+}
+
+
+
 // functtion runs loop through symbols array 
 // returns 3 random elements from the array for col 1-3
-const spinReel = (col) =>{
+const spinReel = (col, defaultSymbols = []) =>{
     const randomIdx = Math.floor(Math.random() * symbols.length);
-    // col. innerHTML = "";
+    col. innerHTML = "";
+    const symbolToShow = defaultSymbols.length > 0 ? defaultSymbols : symbols;
     for (let i= 0; i < 3; i++) {
-        const symbolIndex = (randomIdx + i) % symbols.length;
+        const symbolIndex = (randomIdx + i) % symbolToShow.length;
         const symbol = symbols[symbolIndex];
         const image = document.createElement('img');
         image.src = `assets/images/${symbol}.png`; 
@@ -57,6 +67,8 @@ const spinReel = (col) =>{
 
 }
 
+// adds default symbols when the page loads
+document.addEventListener("DOMContentLoaded", addDefaultSymbols)
 
 const spin = () =>{
     spinReel(column1);

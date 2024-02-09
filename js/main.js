@@ -28,13 +28,59 @@ inputContainer.appendChild(betInputEl);
 inputContainer.appendChild(lineLabelEl);
 inputContainer.appendChild(lineInputEl);
 
-
-
 const btn = document.createElement("button");
-btn.setAttribute("id","spin-btn");
-btn.textContent = "SPIN"
+btn.setAttribute("id", "spin-btn");
+btn.textContent = "SPIN";
 output.appendChild(btn);
-console.log(btn);
+
+
+const symbols = ['html','javascript','nestjs','npm','typescript','react'];
+const column1 = document.getElementById('col-1');
+const column2 = document.getElementById('col-2');
+const column3 = document.getElementById('col-3');
+
+// functtion runs loop through symbols array 
+// returns 3 random elements from the array for col 1-3
+const spinReel = (col) =>{
+    const randomIdx = Math.floor(Math.random() * symbols.length);
+    // col. innerHTML = "";
+    for (let i= 0; i < 3; i++) {
+        const symbolIndex = (randomIdx + i) % symbols.length;
+        const symbol = symbols[symbolIndex];
+        const image = document.createElement('img');
+        image.src = `assets/images/${symbol}.png`; 
+        image.alt = symbol;
+        col.appendChild(image)
+        console.log(symbol);
+        
+    }
+
+}
+
+
+const spin = () =>{
+    spinReel(column1);
+    spinReel(column2);
+    spinReel(column3);
+}
+
+
+const spinButton = document.getElementById("spin-btn");
+spinButton.addEventListener("click", spin);
+
+
+
+
+
+
+
+
+console.log(column1);
+console.log(column2);
+console.log(column3);
+
+
+
 
 
 

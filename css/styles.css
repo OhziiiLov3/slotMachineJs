@@ -99,6 +99,20 @@ input::placeholder {
   overflow: hidden;
 }
 
+
+
+.reel-col img{
+ width: 100%;
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+  object-fit: contain;
+}
+
+
+
+
+
 /* Spin Button */
 
 #spin-btn {

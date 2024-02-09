@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Workbench&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(325deg, rgb(82, 25, 87) 4%, rgb(49, 41, 80) 49%);
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.title {
+  margin-top: 2em;
+  color: #fff;
+  font-weight: 700;
+  font-size: 3em;
+  font-family: "Workbench", sans-serif;
+  animation: colorChange 4s infinite;
+}
+
+/* Color animation */
+@keyframes colorChange {
+  0% {
+    color: #fff; /* Start color */
+  }
+  50% {
+    color: #00f; /* Middle color */
+  }
+  100% {
+    color: #ff0; /* End color */
+  }
+}
+
+/* Inputs for Bets and Lines */
+
+.input-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2em;
+    width: 70vw;
+    padding: 10px;
+}
+
+label {
+    align-items: center; 
+}
+
+
+input {
+ text-align: center;
+  padding: 10px 30px;
+  font-size: 1em;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+input::placeholder {
+    color: rgb(82, 25, 87); 
+    font-weight: 800;
+}
+
+
+.game-container {
+  width: 80vw;
+  height: 60vh;
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-top: 2em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.reels-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50vh;
+  margin: 3em auto;
+}
+
+.reel-col {
+  width: 10em;
+  height: 40vh;
+  border: 2px solid #333;
+  margin: 0 15px;
+  overflow: hidden;
+}
+
+/* Spin Button */
+
+#spin-btn {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 2em;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 10px 50px;
+  font-size: 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#spin-btn:hover {
+  background-color: #2980b9;
+}
+
+
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 760px) {
+    .input-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    label {
+        margin-top: 0.5em; 
+        margin-bottom: .5em;
+        margin-right: 0; 
+    }
+    input{
+        margin-bottom: 1em;
+    }
+}

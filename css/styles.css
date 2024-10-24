@@ -91,6 +91,9 @@ input::placeholder {
   margin: 3em auto;
 }
 
+
+
+
 .reel-col {
   width: 10em;
   height: 40vh;
@@ -99,7 +102,22 @@ input::placeholder {
   overflow: hidden;
 }
 
+@keyframes spin {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 
+.reel-col .image-container {
+  display: flex;
+  flex-direction: column; /* Stack images vertically */
+  animation: none;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+} 
 
 .reel-col img{
  width: 100%;
@@ -108,8 +126,6 @@ input::placeholder {
   margin: 0 auto; 
   object-fit: contain;
 }
-
-
 
 
 

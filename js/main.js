@@ -52,15 +52,16 @@ const addDefaultSymbols = () =>{
 // returns 3 random elements from the array for col 1-3
 const spinReel = (col, defaultSymbols = []) =>{
     const randomIdx = Math.floor(Math.random() * symbols.length);
-    col. innerHTML = "";
     const symbolToShow = defaultSymbols.length > 0 ? defaultSymbols : symbols;
-    for (let i= 0; i < 3; i++) {
+    const imageContainer = col.querySelector('.image-container');
+    imageContainer.innerHTML = "";
+    for (let i= 0; i < 36; i++) {
         const symbolIndex = (randomIdx + i) % symbolToShow.length;
         const symbol = symbols[symbolIndex];
         const image = document.createElement('img');
-        image.src = `assets/images/${symbol}.png`; 
+        image.src = `assets/images/${symbol}.png`;
         image.alt = symbol;
-        col.appendChild(image)
+        imageContainer.appendChild(image)
         console.log(symbol);
         
     }
@@ -70,10 +71,47 @@ const spinReel = (col, defaultSymbols = []) =>{
 // adds default symbols when the page loads
 document.addEventListener("DOMContentLoaded", addDefaultSymbols)
 
-const spin = () =>{
-    spinReel(column1);
-    spinReel(column2);
-    spinReel(column3);
+const spin = (event) =>{
+  event.preventDefault();
+//     clear and reset animations 
+  column1.querySelector('.image-container').style.animation = 'none';
+  column2.querySelector(".image-container").style.animation = "none";
+  column3.querySelector(".image-container").style.animation = "none";
+
+   // Force reflow to reset animations (important for applying the new animation)
+   column1.offsetHeight; 
+   column2.offsetHeight; 
+   column3.offsetHeight; 
+
+// //   adds the spin animation to class to each col 
+column1.querySelector('.image-container').style.animation = 'spin 1s linear infinite';
+column2.querySelector('.image-container').style.animation = 'spin 1.2s linear infinite';
+column3.querySelector('.image-container').style.animation = 'spin 1.4s linear infinite';
+ // Now we will gradually slow down each column at different times
+ setTimeout(() => {
+  column1.querySelector(".image-container").style.animation = 'spin 1.5s ease-out';
+}, 1000); // After 1 second, slow down column 1
+
+setTimeout(() => {
+  column2.querySelector(".image-container").style.animation = 'spin 2s ease-out';
+}, 1300); // After 1.3 seconds, slow down column 2
+
+setTimeout(() => {
+  column3.querySelector(".image-container").style.animation = 'spin 2.5s ease-out';
+}, 1600); // After 1.6 seconds, slow down column 3
+
+  // Finally, stop the spin completely and show the final result after it slows down
+setTimeout(() => {
+  column1.querySelector(".image-container").style.animation = "";
+  column2.querySelector(".image-container").style.animation = "";
+  column3.querySelector(".image-container").style.animation = "";
+
+
+  // spinReel(column1);
+  // spinReel(column2);
+  // spinReel(column3);
+}, 2500);
+
 }
 
 
